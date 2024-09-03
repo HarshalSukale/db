@@ -1,0 +1,20 @@
+body {
+    background-image: url(bg3.jpg);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 5px;
+    padding: 5px;
+    font-size: medium;
+  }
+
+header {
+    background-image: url(art.jpg);
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+  }
+  footer {
+    background-image: url(bg.png);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }

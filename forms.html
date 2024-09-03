@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Web Page</title>
+    <style>
+        #container {
+            margin-left: 40%;
+            margin-right: 40%;
+            width: 400px;
+            height: auto;
+            position: relative;
+            background-image: url(bg.png);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        #head {
+            background-color: rgb(17, 42, 76);
+            text-align: center;
+            color: aliceblue;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #styledDiv {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<header id="head">
+    <h2>Feedback</h2>
+</header>
+<p style="text-align: center;">Please provide Feedback</p>
+
+<form id="frm1" action="/action_page.php">
+    <div id="container">
+        First name: <input type="text" name="fname" value="Harshal"><br>
+        Last name: <input type="text" name="lname" value="Sukale"><br><br>
+        <input type="submit" value="Submit" onclick="handleSubmit(event)">
+    </div>
+</form>
+
+<p id="demo" style="text-align: center;"></p>
+
+<h2 onclick="this.innerHTML = 'Thank you!'">Click on this text!</h2>
+
+<h2>DOM Manipulation Example</h2>
+<div id="content">
+    <h3>Content Area</h3>
+</div>
+<button id="addParagraphButton">Add Paragraph</button>
+
+<h2>Change Element Styles Example</h2>
+<div id="styledDiv">Click the button to change my color!</div>
+<button id="changeColorButton">Change Color</button>
+
+<h2>Change Image Example</h2>
+<img id="dynamicImage" src="image1.png" alt="Image" style="width: 100px; height: auto;">
+<button id="changeImageButton">Change Image</button>
+
+<script>
+    // Handle form submission
+    function handleSubmit(event) {
+        event.preventDefault(); // Prevent form submission
+        const x = document.forms["frm1"];
+        let text = "";
+        for (let i = 0; i < x.length; i++) {
+            text += x.elements[i].value + "<br>";
+        }
+        document.getElementById("demo").innerHTML = text;
+    }
+
+    // Change color of styledDiv
+    document.getElementById("changeColorButton").onclick = function() {
+        const styledDiv = document.getElementById("styledDiv");
+        styledDiv.style.color = "blue"; // Change text color
+        styledDiv.style.position = "relative"; // Change position
+        styledDiv.style.top = "10px"; // Move down
+    };
+
+    // Change image source
+    document.getElementById("changeImageButton").onclick = function() {
+        const img = document.getElementById("dynamicImage");
+        img.src = "bg.png"; // Change image source
+    };
+
+    // Add a paragraph
+    document.getElementById("addParagraphButton").onclick = function() {
+        const newParagraph = document.createElement("p");
+        const textNode = document.createTextNode("This is a new paragraph added dynamically.");
+        newParagraph.appendChild(textNode);
+        document.getElementById("content").appendChild(newParagraph);
+    };
+
+    // Delete the last paragraph in the content area
+    document.getElementById("deleteParagraphButton").onclick = function() {
+        const content = document.getElementById("content");
+        const paragraphs = content.getElementsByTagName("p");
+        if (paragraphs.length > 0) {
+            content.removeChild(paragraphs[paragraphs.length - 1]); // Remove the last paragraph
+        }
+    };
+</script>
+
+</body>
+</html>
